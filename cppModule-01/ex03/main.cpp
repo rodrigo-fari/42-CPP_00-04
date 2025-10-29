@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:45:18 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/06/25 18:01:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/29 15:32:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 #include "Weapon.hpp"
 
 int main(void) {
+	
 	{
-		Weapon pt = Weapon("Glockada adaptada");
-		HumanA menor("menor", pt);
-		menor.attack();
-		pt.setType("quadrada");
-		menor.attack();
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
 	{
-		Weapon oitao = Weapon("oitao");
-		HumanB jorgin("Jorgin");
-		jorgin.attack();
-		jorgin.setWeapon(oitao);
-		jorgin.attack();
-		oitao.setType("facao cego");
-		jorgin.attack();
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 	}
 }
