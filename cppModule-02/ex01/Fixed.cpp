@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:24:18 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/08/19 15:29:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:02:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ Fixed::Fixed() : _fixedPoint(0) {
 	std::cout <<  "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int intToFixed) {
+Fixed::Fixed(const int intNbr) {
 	std::cout <<  "Int constructor called" << std::endl;
-	//TODO IMPLEMENTATION <--------------------------------------------------------------| IMPORTANT ! |----------------------
+	this->_fixedPoint = (intNbr << this->_fracBits);
 }
 
-Fixed::Fixed(const float floatToFixed) {
+Fixed::Fixed(const float floatNbr) {
 	std::cout <<  "Float constructor called" << std::endl;
-	//TODO IMPLEMENTATION <--------------------------------------------------------------| IMPORTANT ! |----------------------
+	this->_fixedPoint = roundf(floatNbr * (1 << this->_fracBits));
 }
 
 Fixed::Fixed( const Fixed& other ) {
@@ -54,11 +54,11 @@ void	Fixed::setRawBits( const int raw ) {
 }
 
 int		Fixed::toInt( void ) const {
-	//TODO IMPLEMENTATION <--------------------------------------------------------------| IMPORTANT ! |----------------------
+	return (this->_fixedPoint >> _fracBits);
 }
 
 float	Fixed::toFloat( void ) const {
-	//TODO IMPLEMENTATION <--------------------------------------------------------------| IMPORTANT ! |----------------------
+	return (static_cast<float>(this->_fixedPoint) / (1 << this->_fracBits));
 }
 
 //Overload do operador "<<".
