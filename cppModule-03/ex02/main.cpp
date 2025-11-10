@@ -6,12 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:37:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/11/10 00:12:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/11/10 00:15:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 static void sep(const char *title)
 {
@@ -25,7 +26,7 @@ static void sep(const char *title)
 int main(void)
 {
 	{
-		sep("TEST 1");
+		sep("CLAP TEST");
 		ClapTrap trapA;
 		ClapTrap trapB("Trap2");
 		trapA.setName("Trap1");
@@ -47,8 +48,19 @@ int main(void)
 		ScavTrap scav1("scav1");
 		clap1.setName("Clap1");
 		clap1.setHitPoints(1);
+		std::cout << std::endl;
 		scav1.attack(clap1.getName());
 		clap1.takeDamage(scav1.getAttackDamage());
+	}
+	{
+		sep("FRAG TEST");
+		ClapTrap clap1;
+		FragTrap frag1("Frag1");
+		clap1.setName("Clap1");
+		clap1.setHitPoints(1);
+		std::cout << std::endl;
+		frag1.attack(clap1.getName());
+		clap1.takeDamage(frag1.getAttackDamage());
 		return 0;
 	}
 }
